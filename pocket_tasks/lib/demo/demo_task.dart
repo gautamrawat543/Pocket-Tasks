@@ -1,0 +1,17 @@
+final List<Map<String, dynamic>> demoTasks = [
+  {"title": "Buy groceries", "done": true},
+  {"title": "Walk the dog", "done": false},
+  {"title": "Call Alice", "done": false},
+  {"title": "Finish Flutter assignment", "done": true},
+  {"title": "Read 10 pages of a book", "done": false},
+  {"title": "Buy groceries", "done": true},
+  {"title": "Walk the dog", "done": false},
+  {"title": "Call Alice", "done": false},
+  {"title": "Finish Flutter assignment", "done": true},
+  {"title": "Read 10 pages of a book", "done": false},
+  {"title": "Buy groceries", "done": true},
+  {"title": "Walk the dog", "done": false},
+  {"title": "Call Alice", "done": false},
+  {"title": "Finish Flutter assignment", "done": true},
+  {"title": "Read 10 pages of a book", "done": false},
+];
