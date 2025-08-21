@@ -53,8 +53,8 @@ class _HomeState extends State<Home> {
               begin: Alignment.topRight,
               end: Alignment.bottomLeft,
               colors: [
-                Color.fromARGB(255, 90, 72, 191), // Light Purple
-                Color(0xFF00008B), // Dark Blue
+                Color.fromARGB(255, 90, 72, 191),
+                Color(0xFF00008B),
               ],
             ),
           ),
@@ -65,9 +65,7 @@ class _HomeState extends State<Home> {
                 // Header Row
                 Row(
                   children: [
-                    // Progress ring placeholder
                     const ProgressRing(size: 60),
-                   
                     const SizedBox(width: 20),
                     const Text(
                       "PocketTasks",
@@ -98,13 +96,12 @@ class _HomeState extends State<Home> {
                             color: Colors.white.withOpacity(0.6),
                           ),
                           filled: true,
-                          fillColor: Colors.white
-                              .withOpacity(0.1), // translucent background
+                          fillColor: Colors.white.withOpacity(0.1),
                           enabledBorder: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(12),
                             borderSide: BorderSide(
-                              color: Color(0xFF00008B), // border color
-                              width: 1.5, // border thickness
+                              color: Color(0xFF00008B),
+                              width: 1.5,
                             ),
                           ),
                           focusedBorder: OutlineInputBorder(
@@ -115,6 +112,20 @@ class _HomeState extends State<Home> {
                             ),
                           ),
                           errorText: _errorText,
+                          errorBorder: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(12),
+                            borderSide: const BorderSide(
+                              color: Colors.red,
+                              width: 2,
+                            ),
+                          ),
+                          focusedErrorBorder: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(12),
+                            borderSide: const BorderSide(
+                              color: Colors.red,
+                              width: 2,
+                            ),
+                          ),
                           contentPadding: const EdgeInsets.symmetric(
                             horizontal: 12,
                             vertical: 14,
@@ -154,11 +165,9 @@ class _HomeState extends State<Home> {
                 ),
                 const SizedBox(height: 25),
 
-                // Search Box
                 TextField(
                   controller: _searchController,
                   onChanged: (value) {
-                    // debounce logic
                     if (_debounce?.isActive ?? false) _debounce!.cancel();
                     _debounce = Timer(const Duration(milliseconds: 300), () {
                       context.read<TaskProvider>().setQuery(value);
@@ -174,8 +183,8 @@ class _HomeState extends State<Home> {
                     enabledBorder: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(12),
                       borderSide: BorderSide(
-                        color: Color(0xFF00008B), // border color
-                        width: 1.5, // border thickness
+                        color: Color(0xFF00008B),
+                        width: 1.5,
                       ),
                     ),
                     focusedBorder: OutlineInputBorder(
@@ -193,7 +202,6 @@ class _HomeState extends State<Home> {
                 ),
                 const SizedBox(height: 25),
 
-                // Filter Chips
                 Wrap(
                   spacing: 10,
                   runSpacing: 8,
@@ -203,13 +211,11 @@ class _HomeState extends State<Home> {
                       isSelected: taskProvider.filter == TaskFilter.all,
                       onTap: () => taskProvider.setFilter(TaskFilter.all),
                     ),
-                    // const SizedBox(width: 10),
                     chip(
                       label: "Active",
                       isSelected: taskProvider.filter == TaskFilter.active,
                       onTap: () => taskProvider.setFilter(TaskFilter.active),
                     ),
-                    // const SizedBox(width: 10),
                     chip(
                       label: "Done",
                       isSelected: taskProvider.filter == TaskFilter.done,
@@ -238,8 +244,8 @@ class _HomeState extends State<Home> {
                           child: const Icon(Icons.delete, color: Colors.white),
                         ),
                         onDismissed: (_) {
-                          final removedTask = task; // keep full object
-                          final removedIndex = index; // keep original position
+                          final removedTask = task;
+                          final removedIndex = index;
                           context.read<TaskProvider>().deleteTask(task.id);
 
                           ScaffoldMessenger.of(context).showSnackBar(
@@ -312,7 +318,6 @@ Widget chip({
   return GestureDetector(
     onTap: onTap,
     child: Container(
-      // width: 90,
       padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 12),
       decoration: BoxDecoration(
         color: const Color(0xFF00008B),

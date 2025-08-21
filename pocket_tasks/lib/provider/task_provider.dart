@@ -16,16 +16,13 @@ class TaskProvider extends ChangeNotifier {
 
   TaskFilter _filter = TaskFilter.all;
 
-  // ✅ Single tasks getter (applies search + filter)
   List<Task> get tasks {
-    // first apply search filter
     var filtered = _query.isEmpty
         ? _tasks
         : _tasks
             .where((t) => t.title.toLowerCase().contains(_query.toLowerCase()))
             .toList();
 
-    // then apply chip filter
     switch (_filter) {
       case TaskFilter.active:
         return filtered.where((t) => !t.done).toList();
