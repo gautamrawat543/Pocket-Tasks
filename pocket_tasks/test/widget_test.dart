@@ -57,7 +57,7 @@ void main() {
           providers: [
             ChangeNotifierProvider(create: (_) => TaskProvider()),
             ChangeNotifierProvider(
-                create: (_) => ThemeProvider()), // <-- add this
+                create: (_) => ThemeProvider()), 
           ],
           child: const MaterialApp(
             home: Home(),

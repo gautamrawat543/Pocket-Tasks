@@ -38,7 +38,7 @@ class _RingPainter extends CustomPainter {
   _RingPainter({required this.progress, required this.isDark});
 
   @override
-  void paint(Canvas canvas, Size size) {
+  void paint(Canvas canvas, Size size) {  
     const stroke = 6.0;
     final rect = Offset.zero & size;
     final center = rect.center;

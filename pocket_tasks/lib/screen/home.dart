@@ -168,7 +168,7 @@ class _HomeState extends State<Home> {
                 TextField(
                   controller: _searchController,
                   onChanged: (value) {
-                    if (_debounce?.isActive ?? false) _debounce!.cancel();
+                    if (_debounce?.isActive ?? false) _debounce!.cancel(); 
                     _debounce = Timer(const Duration(milliseconds: 300), () {
                       context.read<TaskProvider>().setQuery(value);
                     });
@@ -342,35 +342,4 @@ Widget chip({
       ),
     ),
   );
-}
-
-class TaskTile extends StatelessWidget {
-  final String title;
-  final bool done;
-
-  const TaskTile({super.key, required this.title, required this.done});
-
-  @override
-  Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 6),
-      child: Row(
-        children: [
-          Icon(
-            done ? Icons.check_circle : Icons.circle_outlined,
-            color: done ? Colors.greenAccent : Colors.white70,
-          ),
-          const SizedBox(width: 8),
-          Text(
-            title,
-            style: TextStyle(
-              color: Colors.white,
-              decoration: done ? TextDecoration.lineThrough : null,
-              fontSize: 16,
-            ),
-          ),
-        ],
-      ),
-    );
-  }
 }
